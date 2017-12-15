@@ -81,11 +81,23 @@ class accountsController extends http\controller
 
     public static function edit()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+       // $record = accounts::findOne($_REQUEST['id']);
+        session_start();
+        $record = accounts::findOne($_SESSION['userID']);
 
         self::getTemplate('edit_account', $record);
 
     }
+
+         $user->phone = $_POST['phone'];
+          $user->birthday = $_POST['birthday'];
+          $user->gender = $_POST['gender'];
+          $user->password = $user->setPassword($_POST['password']);
+          $user->save();
+          header("Location: index.php?page=tasks&action=all");
+
+}
+
 //this is used to save the update form data
     public static function save() {
         $user = accounts::findOne($_REQUEST['id']);
@@ -131,6 +143,7 @@ class accountsController extends http\controller
 
                 session_start();
                 $_SESSION["userID"] = $user->id;
+                header("Location: index.php?page=tasks&action=all");
                 //forward the user to the show all todos page
                 print_r($_SESSION);
             } else {
@@ -143,5 +156,11 @@ class accountsController extends http\controller
 
 
     }
+    public static function logout()
+    {
+        session_destroy();
+        header("Location: https://web.njit.edu/~mk758/FinalProject/mvc/");
+    }
+
 
 }
