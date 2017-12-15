@@ -66,6 +66,8 @@ class routes
         //GET METHOD index.php?page=accounts&action=all
 //https://web.njit.edu/~kwilliam/mvc/index.php?page=accounts&action=all
 
+
+//GET METHOD index.php?page=accounts&action=all
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'all';
@@ -73,8 +75,9 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'all';
         $routes[] = $route;
-        //GET METHOD index.php?page=accounts&action=show
+        
 
+//GET METHOD index.php?page=accounts&action=show
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
@@ -83,10 +86,8 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
-        //This goes in the login form action method
-        //GET METHOD index.php?page=accounts&action=login
-
-
+//This goes in the login form action method
+//GET METHOD index.php?page=accounts&action=login
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'login';
@@ -96,7 +97,16 @@ class routes
         $routes[] = $route;
 
         //YOU WILL NEED TO ADD MORE ROUTES
+//GET method for index.php?page=tasks&action=delete
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'delete';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'delete';
+        $routes[] = $route;
 
+//POST method for index.php?page=tasks&action=delete
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'delete';
@@ -105,7 +115,7 @@ class routes
         $route->method = 'delete';
         $routes[] = $route;
 
-
+//POST method for index.php?page=accounts&action=delete
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'delete';
@@ -114,6 +124,7 @@ class routes
         $route->method = 'delete';
         $routes[] = $route;
 
+//GET method for index.php?page=accounts&action=edit
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'edit';
@@ -122,13 +133,36 @@ class routes
         $route->method = 'edit';
         $routes[] = $route;
 
+//POST method for index.php?page=accounts&action=edit
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'save';
+        //$route->action = 'save';
+        $route->action = 'edit';
         $route->page = 'accounts';
         $route->controller = 'accountsController';
         $route->method = 'save';
         $routes[] = $route;
+
+//GET method for index.php?page=accounts&action=store 
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'store';
+        $route->page = 'accounts';
+        $route->controller = 'accountssController';
+        $route->method = 'store';
+        $routes[] = $route;
+
+//POST method for index.php?page=accounts&action=store
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'store';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'store';
+        $routes[] = $route;
+
+
+
         //this is the route for the reg form
         $route = new route();
         $route->http_method = 'GET';
@@ -146,6 +180,98 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 
+//GET method for index.php?page=tasks&action=edit 
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'edit';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'edit';
+        $routes[] = $route;
+
+//POST method for index.php?page=tasks&action=edit
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'edit';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'edit';
+        $routes[] = $route;
+
+//GET method for index.php?page=tasks&action=store  
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'store';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'store';
+        $routes[] = $route;
+
+
+//POST method for index.php?page=tasks&action=store
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'store';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'store';
+        $routes[] = $route;
+
+//GET METHOD index.php?page=tasks&action=save
+         $route = new route();
+         $route->http_method = 'GET';
+         $route->action = 'save';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'save';
+         $routes[] = $route;
+
+//POST METHOD index.php?page=tasks&action=save
+         $route = new route();
+         $route->http_method = 'POST';
+         $route->action = 'save';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'save';
+         $routes[] = $route;
+
+//GET METHOD index.php?page=tasks&action=create
+         $route = new route();
+         $route->http_method = 'GET';
+         $route->action = 'create';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'create';
+         $routes[] = $route;
+
+//POST METHOD index.php?page=tasks&action=create
+         $route = new route();
+         $route->http_method = 'POST';
+         $route->action = 'create';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'create';
+         $routes[] = $route;
+
+
+//GET method for index.php?page=accounts&action=logout
+         $route = new route();
+         $route->http_method = 'GET';
+         $route->action = 'logout';
+         $route->page = 'accounts';
+         $route->controller = 'accountsController';
+         $route->method = 'logout';
+         $routes[] = $route;
+
+
+//POST method for index.php?page=accounts&action=logout
+         $route = new route();
+         $route->http_method = 'POST';
+         $route->action = 'logout';
+         $route->page = 'accounts';
+         $route->controller = 'accountsController';
+         $route->method = 'logout';
+         $routes[] = $route;
 
         return $routes;
     }
