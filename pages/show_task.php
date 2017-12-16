@@ -38,13 +38,13 @@ print utility\htmlTable::generateTableFromOneRecord($data);
 
  <form action="index.php?page=tasks&action=save&id=<?php echo $data->id; ?>" method="post">
  
-  ID: <label> <input type="number" align="middle" name="id"  value="<?php echo $data->fname; ?>"></label><br><br>
-  Ownermail: <label> <input type="email" name="mail" value="<?php echo $data->lname; ?>"></label><br><br>
-  Ownerid: <label><input type="number" name="oid" value="<?php echo $data->email; ?>"></label><br><br>
-  Createddate: <label> <input type="date" name="createdate"  value="<?php echo $data->phone; ?>"></label><br><br>
-  Duedate: <label><input type="date" name="duedate" value="<?php echo $data->birthday; ?>"></label><br><br>
-  Message: <label><input type="text" name="message" value="<?php echo $data->gender; ?>"></label><br><br>
-  isDone: <label><input type="number" name="isdone" value="<?php echo $data->gender; ?>"></label><br><br>
+  ID: <label> <input type="number" align="middle" name="id"  value="<?php echo $data->ID; ?>"></label><br><br>
+  Ownermail: <label> <input type="email" name="mail" value="<?php echo $data->Ownermail; ?>"></label><br><br>
+  Ownerid: <label><input type="number" name="oid" value="<?php echo $data->Ownerid; ?>"></label><br><br>
+  Createddate: <label> <input type="date" name="createdate"  value="<?php echo $data->createddate; ?>"></label><br><br>
+  Duedate: <label><input type="date" name="duedate" value="<?php echo $data->duedate; ?>"></label><br><br>
+  Message: <label><input type="text" name="message" value="<?php echo $data->message; ?>"></label><br><br>
+  isDone: <label><input type="number" name="isdone" value="<?php echo $data->isdone; ?>"></label><br><br>
   <input type="submit" value="Submit form">
  </form>
 
