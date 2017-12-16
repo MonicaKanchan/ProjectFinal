@@ -235,6 +235,27 @@ class routes
          $route->method = 'save';
          $routes[] = $route;
 
+
+//GET METHOD index.php?page=tasks&action=insertTask
+         $route = new route();
+         $route->http_method = 'GET';
+         $route->action = 'insertTask';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'insertTask';
+         $routes[] = $route;
+
+
+//POST METHOD index.php?page=tasks&action=insertTask
+         $route = new route();
+         $route->http_method = 'POST';
+         $route->action = 'insertTask';
+         $route->page = 'tasks';
+         $route->controller = 'tasksController';
+         $route->method = 'insertTask';
+         $routes[] = $route;
+
+
 //GET METHOD index.php?page=tasks&action=create
          $route = new route();
          $route->http_method = 'GET';
