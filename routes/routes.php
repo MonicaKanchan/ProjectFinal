@@ -143,6 +143,24 @@ class routes
         $route->method = 'save';
         $routes[] = $route;
 
+//GET METHOD index.php?page=accounts&action=save
+         $route = new route();
+         $route->http_method = 'GET';
+         $route->action = 'save';
+         $route->page = 'accounts';
+         $route->controller = 'accountsController';
+         $route->method = 'save';
+         $routes[] = $route;
+
+//POST METHOD index.php?page=accounts&action=save
+         $route = new route();
+         $route->http_method = 'POST';
+         $route->action = 'save';
+         $route->page = 'accounts';
+         $route->controller = 'accountsController';
+         $route->method = 'save';
+         $routes[] = $route;
+
 //GET method for index.php?page=accounts&action=store 
         $route = new route();
         $route->http_method = 'GET';
