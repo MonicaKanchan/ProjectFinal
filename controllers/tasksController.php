@@ -32,6 +32,27 @@ class tasksController extends http\controller
         self::getTemplate('all_tasks', $records);
 
     }
+
+
+
+
+    public static function insertTask()
+    {
+
+
+        $user = new todo();
+        $user->owneremail = $_POST['mail'];
+        $user->ownerid = $_POST['oid'];
+        $user->createddate = $_POST['createdate'];
+        $user->duedate = $_POST['duedate'];
+        $user->message = $_POST['message'];
+        $user->isdone = $_POST['isdone'];
+        $user->save();
+        header("Location: index.php?page=tasks&action=all");
+    }   
+
+
+
     //to call the show function the url is called with a post to: index.php?page=task&action=create
     //this is a function to create new tasks
 
