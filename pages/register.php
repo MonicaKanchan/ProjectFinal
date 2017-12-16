@@ -17,15 +17,25 @@
 
 <body>
 
+<style>
+ label
+ {
+ width: 5em;
+ float: right;
+ text-align: center;
+ margin-right: 68.0em;
+ display: block;
+ }
+ </style>
 
 <form action="index.php?page=accounts&action=register" method="post">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    Email: <input type="text" name="email"><br>
-    Phone: <input type="text" name="phone"><br>
-    Birthday: <input type="text" name="birthday"><br>
-    Gender: <input type="text" name="gender"><br>
-    Password: <input type="password" name="password"><br>
+    First name:<label> <input type="text" name="fname"></label><br>
+    Last name: <label><input type="text" name="lname"></label><br>
+    Email: <label><input type="text" name="email"></label><br>
+    Phone: <label><input type="text" name="phone"></label><br>
+    Birthday:<label><input type="text" name="birthday"></label><br>
+    Gender: <label><input type="text" name="gender"></label><br>
+    Password: <label><input type="password" name="password"></label><br>
     <input type="submit" value="Submit form">
 </form>
 
