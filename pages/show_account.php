@@ -30,15 +30,28 @@ print utility\htmlTable::generateTableFromOneRecord($data)
 
 ?>
 
+
+<style>
+ label
+ {
+ width: 5em;
+ float: right;
+ text-align: center;
+ margin-right: 68.0em;
+ display: block;
+ }
+ </style>
+
+
 <form action="index.php?page=accounts&action=save&id=<?php echo $data->id; ?>" method="post">
 
-    First name: <input type="text" name="fname" value="<?php echo $data->fname; ?>"><br>
 
-    Last name: <input type="text" name="lname" value="<?php echo $data->lname; ?>"><br>
-    Email: <input type="text" name="email" value="<?php echo $data->email; ?>"><br>
-    Phone: <input type="text" name="phone" value="<?php echo $data->phone; ?>"><br>
-    Birthday: <input type="text" name="birthday" value="<?php echo $data->birthday; ?>"><br>
-    Gender: <input type="text" name="gender" value="<?php echo $data->gender; ?>"><br>
+    First name:<label><input type="text" name="fname" value="<?php echo $data->fname; ?>"></label><br>
+    Last name: <label><input type="text" name="lname" value="<?php echo $data->lname; ?>"></label><br>
+    Email:<label><input type="text" name="email" value="<?php echo $data->email; ?>"></label><br>
+    Phone: <label><input type="text" name="phone" value="<?php echo $data->phone; ?>"></label><br>
+    Birthday: <label><input type="text" name="birthday" value="<?php echo $data->birthday; ?>"></label><br>
+    Gender: <label><input type="text" name="gender" value="<?php echo $data->gender; ?>"></label><br>
     <input type="submit" value="Submit form">
 </form>
 
