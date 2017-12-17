@@ -22,13 +22,13 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        $records = todos::findAll();
-       /* session_start();
+        //$records = todos::findAll();
+        session_start();
 
         $userID = $_SESSION['userID'];
 
         $records = todos::findTasksbyID($userID);
-*/
+
         self::getTemplate('all_tasks', $records);
 
     }
@@ -163,6 +163,7 @@ class tasksController extends http\controller
     public static function delete()
     {
         $record = todos::findOne($_REQUEST['id']);
+        
         $record->deleteTask();
         print_r($_POST);
         header("Location: index.php?page=tasks&action=all");
