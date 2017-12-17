@@ -96,17 +96,49 @@ class tasksController extends http\controller
     {
 
 
-        $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['body'];
-        $record->save();
+        //$record = todos::findOne($_REQUEST['id']);
+        //$record->body = $_REQUEST['body'];
+        //$record->save();
         print_r($_POST);
+        session_start();
+        if(key_exists('userID',$_SESSION)) 
+        {
+            $userID = $_SESSION['userID'];
+        } 
+        else 
+        {
+ 
+            header("Location: index.php?page=homepage&action=show");
+        }
+
+        $userID = $_SESSION['userID'];
+        if(isset($_POST['id']) == 1)
+        {
+
+            $record = todos::findOne($_REQUEST['id']);
+        }
+         else 
+        {
+            $record = new todo();
+        }
+        $record->message = $_POST['message'];
+        $record->isdone = $_POST['isdone'];
+        $record->createddate = $_POST['createddate'];
+        $record->duedate = $_POST['duedate'];
+        $record->ownerid = $userID;
+        $record->owneremail = accounts::getEmail($userID);
+ 
+        echo $record->owneremail;
+        $record->save();
+ 
+        header("Location: index.php?page=tasks&action=all");
 
     }
 
 
     public static function save()
     {
-        $user = todos::findOne($_REQUEST['id']);
+        /*$user = todos::findOne($_REQUEST['id']);
 
         $user->owneremail = $_POST['mail'];
          $user->ownerid = $_POST['oid'];
@@ -115,7 +147,14 @@ class tasksController extends http\controller
          $user->message = $_POST['message'];
          $user->isdone = $_POST['isdone'];
          $user->save();
-         header("Location: index.php?page=tasks&action=all");
+         header("Location: index.php?page=tasks&action=all");*/
+
+        session_start();
+        $task = new todo();
+ 
+        $task->body = $_POST['body'];
+        $task->ownerid = $_SESSION['userID'];
+        $task->save();
   
     }
 
@@ -125,7 +164,8 @@ class tasksController extends http\controller
     {
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
-        print_r($_POST);
+        //print_r($_POST);
+        header("Location: index.php?page=tasks&action=all");
 
     }
 
