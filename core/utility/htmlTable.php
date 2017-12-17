@@ -22,6 +22,7 @@ class htmlTable
         foreach ($fieldHeadings as $heading) {
             $tableGen .= '<th>' . $heading . '</th>';
         }
+        $tableGen .= '<th></th>';
         $tableGen .= '</tr>';
         foreach ($array as $record) {
             $tableGen .= '<tr>';
@@ -32,6 +33,7 @@ class htmlTable
                     $tableGen .= '<td>' . $value . '</td>';
                 }
             }
+            $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
             $tableGen .= '</tr>';
         }
 
@@ -45,7 +47,8 @@ class htmlTable
         $tableGen = '<table border="1" cellpadding="10"><tr>';
 
         $tableGen .= '<tr>';
-        foreach ($innerArray as $innerRow => $value) {
+        foreach ($innerArray as $innerRow => $value) 
+        {
             $tableGen .= '<th>' . $innerRow . '</th>';
         }
         $tableGen .= '</tr>';
