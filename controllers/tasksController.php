@@ -112,7 +112,7 @@ class tasksController extends http\controller
         }
 
         $userID = $_SESSION['userID'];
-        if(isset($_POST['id']) == 1)
+        if(isset($_REQUEST['id']) == 1)
         {
 
             $record = todos::findOne($_REQUEST['id']);
@@ -163,8 +163,8 @@ class tasksController extends http\controller
     public static function delete()
     {
         $record = todos::findOne($_REQUEST['id']);
-        $record->delete();
-        //print_r($_POST);
+        $record->deleteTask();
+        print_r($_POST);
         header("Location: index.php?page=tasks&action=all");
 
     }
