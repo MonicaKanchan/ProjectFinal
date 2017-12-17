@@ -5,12 +5,9 @@
  * Date: 11/27/17
  * Time: 5:32 PM
  */
-
-
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
-
     //each method in the controller is named an action.
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
@@ -18,21 +15,15 @@ class accountsController extends http\controller
         $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('show_account', $record);
     }
-
     //to call the show function the url is index.php?page=accounts&action=all
-
     public static function all()
     {
-
         $records = accounts::findAll();
         self::getTemplate('all_accounts', $records);
-
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
     //this is a function to create new tasks
-
     //you should check the notes on the project posted in moodle for how to use active record here
-
     //this is to register an account i.e. insert a new account
     public static function register()
     {
@@ -40,14 +31,11 @@ class accountsController extends http\controller
         //USE THE ABOVE TO SEE HOW TO USE Bcrypt
         self::getTemplate('register');
     }
-
     //this is the function to save the user the new user for registration
     public static function store()
-
     {
         $user = accounts::findUserbyEmail($_REQUEST['email']);
-
-
+        
         if ($user == FALSE) {
             $user = new account();
             $user->email = $_POST['email'];
@@ -62,58 +50,46 @@ class accountsController extends http\controller
             //Turn the set password function into a static method on a utility class.
             $user->password = $user->setPassword($_POST['password']);
             $user->save();
-
             //you may want to send the person to a
             // login page or create a session and log them in
             // and then send them to the task list page and a link to create tasks
             header("Location: index.php?page=accounts&action=all");
-
-        } else {
+        }
+         else
+          {
             //You can make a template for errors called error.php
             // and load the template here with the error you want to show.
            // echo 'already registered';
             $error = 'already registered';
             self::getTemplate('error', $error);
-
         }
-
     }
-
     public static function edit()
     {
-       // $record = accounts::findOne($_REQUEST['id']);
-        session_start();
-        $record = accounts::findOne($_SESSION['userID']);
-
+        $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('edit_account', $record);
-
     }
-
-
 //this is used to save the update form data
-    public static function save() {
+    
+    public static function save()
+     {
         $user = accounts::findOne($_REQUEST['id']);
-
         $user->email = $_POST['email'];
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
-        $user->password = $user->setPassword($_POST['password']);
         $user->save();
-        //header("Location: index.php?page=accounts&action=all");
-        header("Location: index.php?page=accounts&action=all");    
-
+        header("Location: index.php?page=accounts&action=all");
     }
 
-    public static function delete() {
 
+    public static function delete() {
         $record = accounts::findOne($_REQUEST['id']);
         $record->delete();
         header("Location: index.php?page=accounts&action=all");
     }
-
     //this is to login, here is where you find the account and allow login or deny.
     public static function login()
     {
@@ -123,38 +99,32 @@ class accountsController extends http\controller
         //you might want to add something that handles if the password is invalid, you could add a page template and direct to that
         //after you login you can use the header function to forward the user to a page that displays their tasks.
         //        $record = accounts::findUser($_POST['email']);
-
         $user = accounts::findUserbyEmail($_REQUEST['email']);
-
-
-        if ($user == FALSE) {
+        
+        if ($user == FALSE)
+         {
             echo 'user not found';
-        } else {
-
-            if($user->checkPassword($_POST['password']) == TRUE) {
-
-                echo 'login';
-
+        } 
+        else
+         {
+            if($user->checkPassword($_POST['password']) == TRUE)
+            {
+                //echo 'login';
                 session_start();
                 $_SESSION["userID"] = $user->id;
-                header("Location: index.php?page=tasks&action=all");
+                $_SESSION["userEmail"] = $user->email;
                 //forward the user to the show all todos page
-                print_r($_SESSION);
-            } else {
-                echo 'password does not match';
+               // print_r($_SESSION);
+            
+                header('Location: index.php?page=tasks&action=oneUser&id='.$user->id);
             }
 
+            else
+            {
+                echo 'password does not match';
+            }
+            
+            
         }
-
-
-
-
     }
-    public static function logout()
-    {
-        session_destroy();
-        header("Location: https://web.njit.edu/~mk758/FinalProject/mvc/");
-    }
-
-
 }
