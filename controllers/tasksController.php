@@ -65,7 +65,21 @@ class tasksController extends http\controller
 
     public static function create()
     {
+        session_start();
+        if(key_exists('userID',$_SESSION)) 
+        {
+            $userID = $_SESSION['userID'];
+        } 
+        else 
+        {
+ 
+            header("Location: index.php?page=homepage&action=show");
+        }
+
+        $userID = $_SESSION['userID'];
+        echo $userID;
         print_r($_POST);
+        self::getTemplate('edit_task');
     }
 
     //this is the function to view edit record form
