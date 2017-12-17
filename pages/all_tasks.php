@@ -17,6 +17,29 @@
 
 <body>
 
+<!-- <h3><a href="index.php?page=accounts&action=logout">LogOut</a></h3> -->
+
+<!-- <h3><a href="index.php?page=tasks&action=create">Create Task</a></h3>
+ -->
+
+<?php 
+  	$userID = $_SESSION['userID'];
+?>
+  <div class="header">
+  	<h3>Welcome <?php echo $_SESSION["userFname"]; ?></h3>
+  </div>
+  <div>
+  	<div style="width: 100%;float: right;">
+    <div style="float: right;width: 35%;"><h3><a href="index.php?page=accounts&action=logout">LogOut</a></h3></div>
+  <div style="float: right;width: 35%;"><u><h3><a href="index.php?page=accounts&action=edit&id=<?php echo $userID; ?>">Edit Profile</a></h3></u></div>
+    <div style="float: right;width: 30%;"><u><h3><a href="index.php?page=accounts&action=show&id=<?php echo $userID; ?>">View Profile</a></h3></u></div>
+    </div>
+  </div>
+
+<div style="width: 100%;">
+ 	<h2><center><a href="index.php?page=tasks&action=create">Create Task</a></center></h2>
+ </div>
+
 <?php
 //this is how you print something
 
@@ -25,7 +48,7 @@ print utility\htmlTable::genarateTableFromMultiArray($data);
 
 ?>
 
-<style>
+<!-- <style>
  label
  {
 
@@ -50,8 +73,8 @@ print utility\htmlTable::genarateTableFromMultiArray($data);
     <input type="submit" value="Insert">
 </form>
 
-<br><h1><a href="index.php?page=accounts&action=edit&id=<?php echo $_SESSION['userID']; ?>">update profile</a></h1>
-<br><h1><a href="index.php?page=accounts&action=logout">logout</a></h1>
+<br><h1><a href="index.php?page=accounts&action=edit&id=<?php echo $_SESSION['userID']; ?>">update profile</a></h1> -->
+
 
 
 <script src="js/scripts.js"></script>
