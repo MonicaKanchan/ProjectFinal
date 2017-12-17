@@ -63,6 +63,8 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'all';
         $routes[] = $route;
+
+         
         //GET METHOD index.php?page=accounts&action=all
 //https://web.njit.edu/~kwilliam/mvc/index.php?page=accounts&action=all
 
@@ -89,12 +91,23 @@ class routes
 //This goes in the login form action method
 //GET METHOD index.php?page=accounts&action=login
         $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'login';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'login';
+        $routes[] = $route;
+
+//POST METHOD index.php?page=accounts&action=login
+        $route = new route();
         $route->http_method = 'POST';
         $route->action = 'login';
         $route->page = 'accounts';
         $route->controller = 'accountsController';
         $route->method = 'login';
         $routes[] = $route;
+
+    
 
         //YOU WILL NEED TO ADD MORE ROUTES
 //GET method for index.php?page=tasks&action=delete
@@ -114,6 +127,10 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'delete';
         $routes[] = $route;
+
+
+        
+
 
 //POST method for index.php?page=accounts&action=delete
         $route = new route();
@@ -289,7 +306,7 @@ class routes
          $route->action = 'create';
          $route->page = 'tasks';
          $route->controller = 'tasksController';
-         $route->method = 'create';
+         $route->method = 'store';
          $routes[] = $route;
 
 
@@ -311,6 +328,15 @@ class routes
          $route->controller = 'accountsController';
          $route->method = 'logout';
          $routes[] = $route;
+
+
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'oneUser';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'oneUser';
+        $routes[] = $route;
 
         return $routes;
     }
