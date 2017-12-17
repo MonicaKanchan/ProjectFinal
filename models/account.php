@@ -35,16 +35,18 @@ final class account extends \database\model
 
     public function setPassword($password) {
 
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = password_hash($password, PASSWORD_BCRYPT);
 
 
         return $password;
 
     }
 
-    public function checkPassword($LoginPassword) {
+    public function checkPassword($LoginPassword)
+    {
+        $hash = password_hash($LoginPassword, PASSWORD_BCRYPT);
 
-        return password_verify($LoginPassword, $this->password);
+        return password_verify($LoginPassword, $hash);
 
 
     }
