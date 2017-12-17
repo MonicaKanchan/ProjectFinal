@@ -34,7 +34,12 @@ class tasksController extends http\controller
     }
 
 
+    public static function oneUser()
 
+    {
+        $records = todos::findTasksbyID($_REQUEST['id']);
+        self::getTemplate('all_tasks', $records);
+    }
 
     public static function insertTask()
     {
