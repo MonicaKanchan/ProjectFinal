@@ -7,11 +7,16 @@ class htmlTable
 {
     public static function genarateTableFromMultiArray($array)
     {
-
+       
+       
         $tableGen = '<table border="1"cellpadding="10">';
-        $tableGen .= '<tr>';
+        // $tableGen .= '<tr>';
         //this grabs the first element of the array so we can extract the field headings for the table
         $fieldHeadings = $array[0];
+
+        if($fieldHeadings != '') {
+            $tableGen .= '<tr>';
+
         $fieldHeadings = get_object_vars($fieldHeadings);
         $fieldHeadings = array_keys($fieldHeadings);
         //this gets the page being viewed so that the table routes requests to the correct controller
@@ -27,15 +32,23 @@ class htmlTable
         foreach ($array as $record) {
             $tableGen .= '<tr>';
             foreach ($record as $key => $value) {
-                if ($key == 'id') {
-                    $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a></td>';
+
+                
+                if ($key == 'id')
+                 {
+                    $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a>&nbsp;<a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
+                    //$id = $value;
+                   // $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a></td>';
+                    //$tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
                 } else {
                     $tableGen .= '<td>' . $value . '</td>';
                 }
             }
-            $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
-            $tableGen .= '</tr>';
+            $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=edit&id=' . $value . '">Edit</a></td>';
+            //$tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
+                $tableGen .= '</tr>';
         }
+    }
 
         $tableGen .= '</table>';
 
