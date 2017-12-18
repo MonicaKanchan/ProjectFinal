@@ -26,7 +26,8 @@
 //this is how you print something  $data contains the record that was selected on the table.
 
 //print_r($data);
-print utility\htmlTable::generateTableFromOneRecord($data)
+session_start();
+print utility\htmlTable::generateTableFromOneRecord($data);
 
 ?>
 
@@ -41,8 +42,20 @@ print utility\htmlTable::generateTableFromOneRecord($data)
  display: block;
  }
  </style> -->
-
-
+ <button onclick="enableProfileEdit()">Enable Edit</button>
+ <form action="index.php?page=accounts&action=edit&id=<?php echo $_SESSION['userID']; ?> " method="post" id="form1">
+     email      : <input type="text" form="form1" id="email" name="email" value="<?php echo $data->email; ?>" readonly><br>
+     fname      : <input type="text" form="form1" id="fname" name="fname" value="<?php echo $data->fname; ?>" readonly><br>
+     lname      : <input type="text" form="form1" id="lname" name="lname" value="<?php echo $data->lname; ?>" readonly><br>
+     phone      : <input type="text" form="form1" id="phone" name="phone" value="<?php echo $data->phone; ?>" readonly><br>
+     birthday   : <input type="text" form="form1" id="birthday" name="birthday" value="<?php echo $data->birthday; ?>" readonly><br>
+     gender     : <input type="text" form="form1"  id="gender" name="gender" value="<?php echo $data->gender; ?>" readonly><br>
+     password   : <input type="password" form="form1"  id="password" name="password" value=''><br>
+     <!-- <button type="submit" value="save"><a
+     href="index.php?page=accounts&action=edit&id=42">save</a></button> -->
+     <input type="submit" id="saveButton" name="save" style="display: none;" value="Save">
+</form>
+<!-- 
 <form action="index.php?page=accounts&action=edit&id=<?php echo $data->id; ?>" method="post">
 
 
@@ -54,7 +67,7 @@ print utility\htmlTable::generateTableFromOneRecord($data)
     Gender: <input type="text" name="gender" value="<?php echo $data->gender; ?>" readonly><br>
     <button type="submit"><a href="index.php?page=accounts&action=edit&id=<?php echo $data->id; ?>">Edit</a></button>
     <input type="submit" value="Submit form"> 
-</form>
+</form> -->
 
 
 <form action="index.php?page=accounts&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
@@ -63,6 +76,6 @@ print utility\htmlTable::generateTableFromOneRecord($data)
 
 <h4><a href="index.php?page=tasks&action=all">Previous Page</a></h4>
 
-<script src="js/scripts.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

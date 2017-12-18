@@ -31,8 +31,7 @@
   <div>
   	<div style="width: 100%;float: right;">
     <div style="float: right;width: 35%;"><h3><a href="index.php?page=accounts&action=logout">LogOut</a></h3></div>
-  <div style="float: right;width: 35%;"><u><h3><a href="index.php?page=accounts&action=edit&id=<?php echo $userID; ?>">Edit Profile</a></h3></u></div>
-    <div style="float: right;width: 30%;"><u><h3><a href="index.php?page=accounts&action=show&id=<?php echo $userID; ?>">View Profile</a></h3></u></div>
+    <div style="float: right;width: 30%;"><u><h3><a href="index.php?page=accounts&action=show&id=<?php echo $userID; ?>">View/Edit Profile</a></h3></u></div>
     </div>
   </div>
 
