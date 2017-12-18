@@ -23,7 +23,7 @@ class homepageController extends http\controller
     	session_destroy();
 
 
-        $templateData['site_name'] = 'MONICA';
+        $templateData['site_name'] = 'ToDo App';
 
 //template data contains what will show up in the $data variable in the homepage template
 //the name of the template 'homepage' becomes 'homepage.php' in the pages directory

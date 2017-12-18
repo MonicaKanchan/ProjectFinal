@@ -20,7 +20,7 @@
 <?php
 //this is how you print something  $data contains the record that was selected on the table.
 
-print utility\htmlTable::generateTableFromOneRecord($data);
+//print utility\htmlTable::generateTableFromOneRecord($data);
 //print_r($data);
 
 ?>
@@ -36,16 +36,20 @@ print utility\htmlTable::generateTableFromOneRecord($data);
  }
  </style>
 
- <form action="index.php?page=tasks&action=save&id=<?php echo $data->id; ?>" method="post">
+ <h3><a href="index.php?page=accounts&action=logout">LogOut</a></h3>
+
+ <button type="submit" id='editEnable' value="edit">Edit</button>
+ <form action="index.php?page=tasks&action=edit&id=<?php echo $data->id; ?>" method="get">
  
-  ID: <label> <input type="number" align="middle" name="id"  value="<?php echo $data->ID; ?>"></label><br><br>
-  Ownermail: <label> <input type="email" name="mail" value="<?php echo $data->Ownermail; ?>"></label><br><br>
-  Ownerid: <label><input type="number" name="oid" value="<?php echo $data->Ownerid; ?>"></label><br><br>
-  Createddate: <label> <input type="date" name="createdate"  value="<?php echo $data->createddate; ?>"></label><br><br>
-  Duedate: <label><input type="date" name="duedate" value="<?php echo $data->duedate; ?>"></label><br><br>
-  Message: <label><input type="text" name="message" value="<?php echo $data->message; ?>"></label><br><br>
-  isDone: <label><input type="number" name="isdone" value="<?php echo $data->isdone; ?>"></label><br><br>
-  <input type="submit" value="Submit form">
+  
+  Ownermail: <label> <input type="email" name="mail" value="<?php echo $data->Ownermail; ?>" readonly></label><br><br>
+  Ownerid: <label><input type="number"  name="oid" value="<?php echo $data->Ownerid; ?>" readonly></label><br><br>
+  Createddate: <label> <input type="date" name="createdate"  value="<?php echo $data->createddate; ?>" readonly></label><br><br>
+  Duedate: <label><input type="date" name="duedate" value="<?php echo $data->duedate; ?>" readonly></label><br><br>
+  Message: <label><input type="text" id="message" name="message" value="<?php echo $data->message; ?>" readonly></label><br><br>
+  isDone: <label><input type="number" id="completedStatus" name="isdone" value="<?php echo $data->isdone; ?>" readonly></label><br><br>
+  
+  <button type="submit">Save</button>
  </form>
 
 <form action="index.php?page=tasks&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
@@ -53,8 +57,13 @@ print utility\htmlTable::generateTableFromOneRecord($data);
 </form>
 
 
+<h3><a href="index.php?page=tasks&action=all">Previous Page</a></h3>
 
-
-<script src="js/scripts.js"></script>
+<script src="js/scripts.js">
+	document.getElementById('editEnable').onclick = function() {
+	    document.getElementById('message').removeAttribute('readonly');
+	    document.getElementById('completedStatus').removeAttribute('readonly');
+	 };
+</script>
 </body>
 </html>

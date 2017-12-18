@@ -77,21 +77,23 @@ class accountsController extends http\controller
     
     public static function save()
      {
-        $user = accounts::findOne($_REQUEST['id']);
+        echo "Coming here";
+	$user = accounts::findOne($_REQUEST['id']);
         $user->email = $_POST['email'];
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
-        $user->save();
-        header("Location: index.php?page=accounts&action=all");
+        //$user->save();
+        //header("Location: index.php?page=tasks&action=all");
     }
 
 
     public static function delete() {
         $record = accounts::findOne($_REQUEST['id']);
-        $record->delete();
+        $record->deleteTask();
+        print_r($_POST);
         header("Location: index.php?page=accounts&action=all");
     }
     //this is to login, here is where you find the account and allow login or deny.
@@ -116,7 +118,11 @@ class accountsController extends http\controller
                 //echo 'login';
                 session_start();
                 $_SESSION["userID"] = $user->id;
+                $userID =  $_SESSION["userID"];
                 $_SESSION["userEmail"] = $user->email;
+                $records = todos::findTasksbyID($userID);
+                
+                //findTasksbyID($_SESSION["userEmail"]);    
                 //forward the user to the show all todos page
                // print_r($_SESSION);
             

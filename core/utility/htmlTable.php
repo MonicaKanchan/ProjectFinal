@@ -27,7 +27,7 @@ class htmlTable
         foreach ($fieldHeadings as $heading) {
             $tableGen .= '<th>' . $heading . '</th>';
         }
-        $tableGen .= '<th></th>';
+        // $tableGen .= '<th></th>';
         $tableGen .= '</tr>';
         foreach ($array as $record) {
             $tableGen .= '<tr>';
@@ -36,7 +36,7 @@ class htmlTable
                 
                 if ($key == 'id')
                  {
-                    $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a>&nbsp;<a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
+                    $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=edit&id=' . $value . '">View</a>&nbsp;<a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
                     //$id = $value;
                    // $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a></td>';
                     //$tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
@@ -44,7 +44,7 @@ class htmlTable
                     $tableGen .= '<td>' . $value . '</td>';
                 }
             }
-            $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=edit&id=' . $value . '">Edit</a></td>';
+            // $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=edit&id=' . $value . '">Edit</a></td>';
             //$tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=delete&id=' . $value . '">Delete</a></td>';
                 $tableGen .= '</tr>';
         }

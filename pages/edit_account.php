@@ -30,7 +30,8 @@
      birthday   : <input type="text" form="form1" name="birthday" value=<?php echo $data->birthday; ?>><br>
      gender     : <input type="text" form="form1"  name="gender" value=<?php echo $data->gender; ?>><br>
      password   : <input type="password" form="form1"  name="password" value=''><br>
-     <button type="submit" form="form1" value="edit">save</button>
+     <button type="submit" value="save"><a
+     href="index.php?page=accounts&action=edit&id=42">save</a></button>
     </form>
 
 

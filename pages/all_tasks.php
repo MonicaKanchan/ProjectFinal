@@ -26,7 +26,7 @@
   	$userID = $_SESSION['userID'];
 ?>
   <div class="header">
-  	<h3>Welcome <?php echo $_SESSION["userFname"]; ?></h3>
+  	<h1>Welcome <!-- <?php echo $_SESSION["userfname"]; ?>< --></h1>
   </div>
   <div>
   	<div style="width: 100%;float: right;">

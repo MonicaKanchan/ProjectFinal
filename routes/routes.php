@@ -128,6 +128,14 @@ class routes
         $route->method = 'delete';
         $routes[] = $route;
 
+//GET method for index.php?page=accounts&action=delete
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'delete';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'delete';
+        $routes[] = $route;
 
         
 
@@ -230,7 +238,15 @@ class routes
         $route->action = 'edit';
         $route->page = 'tasks';
         $route->controller = 'tasksController';
-        $route->method = 'edit';
+        $route->method = 'store';
+        $routes[] = $route;
+
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'update';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'store';
         $routes[] = $route;
 
 //GET method for index.php?page=tasks&action=store  

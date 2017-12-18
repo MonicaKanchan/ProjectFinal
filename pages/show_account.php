@@ -53,7 +53,7 @@ print utility\htmlTable::generateTableFromOneRecord($data)
     Birthday: ><input type="text" name="birthday" value="<?php echo $data->birthday; ?>" readonly><br>
     Gender: <input type="text" name="gender" value="<?php echo $data->gender; ?>" readonly><br>
     <button type="submit"><a href="index.php?page=accounts&action=edit&id=<?php echo $data->id; ?>">Edit</a></button>
-    <!-- <input type="submit" value="Submit form"> -->
+    <input type="submit" value="Submit form"> 
 </form>
 
 
