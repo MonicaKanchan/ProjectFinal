@@ -77,16 +77,15 @@ class accountsController extends http\controller
     
     public static function save()
      {
-        echo "Coming here";
-	$user = accounts::findOne($_REQUEST['id']);
+        $user = accounts::findOne($_REQUEST['id']);
         $user->email = $_POST['email'];
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
-        //$user->save();
-        //header("Location: index.php?page=tasks&action=all");
+        $user->save();
+        header("Location: index.php?page=tasks&action=all");
     }
 
 
